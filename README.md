@@ -7,8 +7,6 @@ OpUSD is a decentralized stablecoin designed to provide secure, fast, and low-co
 Try running some of the following tasks:
 
 ```shell
-npx hardhat help
-npx hardhat test
 REPORT_GAS=true npx hardhat test
 npx hardhat node
 ```
