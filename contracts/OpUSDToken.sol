@@ -4,7 +4,7 @@ pragma solidity ^0.8.22;
 
 import {BasicToken} from "./Basic/BasicToken.sol";
 
-contract TokenERC20 is BasicToken {
+contract OpUSDToken is BasicToken {
     uint256 public maxSupply;
 
     event MaxSupplyUpdated(uint256 oldMaxSupply, uint256 newMaxSupply);
