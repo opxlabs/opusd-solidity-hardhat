@@ -1,0 +1,25 @@
+{
+  "name": "basictoken-hardhat",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Yemosoft",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox-viem": "^3.0.0",
+    "dotenv": "^16.4.7",
+    "hardhat": "^2.22.18",
+    "@openzeppelin/contracts": "^5.2.0",
+    "@typechain/hardhat": "^9.1.0",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0"
+  },
+  "dependencies": {
+    "@nomicfoundation/hardhat-verify": "^2.0.12",
+    "@tenderly/hardhat-tenderly": "^2.5.2"
+  }
+}
