@@ -1,0 +1,5 @@
+// deploy 
+npx hardhat ignition deploy  ignition/modules/OpUSD.ts --deployment-id pol-deployment --network polygon
+
+// verify 
+npx hardhat ignition verify pol-deployment

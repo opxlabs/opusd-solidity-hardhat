@@ -4,7 +4,7 @@ pragma solidity ^0.8.22;
 
 import {BasicToken} from "./Basic/BasicToken.sol";
 
-contract OpUSDToken is BasicToken {
+contract OPUSDToken is BasicToken {
     uint256 public maxSupply;
 
     event MaxSupplyUpdated(uint256 oldMaxSupply, uint256 newMaxSupply);
@@ -19,6 +19,10 @@ contract OpUSDToken is BasicToken {
     ) BasicToken(tokenName, tokenSymbol, defaultAdmin, pauser, minter) {
         require(_maxSupply > 0, "Max supply must be greater than 0");
         maxSupply = _maxSupply;
+    }
+
+    function decimals() public pure override returns (uint8) {
+        return 6;
     }
 
     function mint(address to, uint256 amount) public override onlyRole(MINTER_ROLE) {

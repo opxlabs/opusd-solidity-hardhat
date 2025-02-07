@@ -1,0 +1,4 @@
+pol
+https://polygonscan.com/token/0x5F215709feAc6d12d484c2E25E1f231A514141CF
+bsc
+https://bscscan.com/address/0x5F215709feAc6d12d484c2E25E1f231A514141CF#code

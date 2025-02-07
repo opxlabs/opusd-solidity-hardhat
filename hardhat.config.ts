@@ -2,6 +2,9 @@ import * as dotenv from 'dotenv'
 import type { HardhatUserConfig } from 'hardhat/config'
 import '@nomicfoundation/hardhat-toolbox-viem'
 import * as tdly from '@tenderly/hardhat-tenderly'
+tdly.setup({
+  automaticVerifications: true,
+})
 dotenv.config()
 
 const DEPLOYER_PRIVATE_KEY = process.env.DEPLOYER_PRIVATE_KEY || ''
@@ -13,16 +16,20 @@ const etherscanApiKey = process.env.ETHERSCAN_API_KEY || ''
 
 const TENDERLY_PROJECT = process.env.TENDERLY_PROJECT || ''
 const TENDERLY_USERNAME = process.env.TENDERLY_USERNAME || ''
-const ENABLE_TENDERLY: boolean = Boolean(process.env.ENABLE_TENDERLY) || false
+const ENABLE_TENDERLY = process.env.ENABLE_TENDERLY || false
+const TENDERLY_ACCESS_KEY = process.env.TENDERLY_ACCESS_KEY || ''
 
 const config: HardhatUserConfig = {
   networks: {
-    ftmtenderly: {
-      chainId: 250,
-      url:
-        'https://virtual.fantom.rpc.tenderly.co/8b62585f-5eec-48f0-98c0-a1f8dc5aaf8d',
+    bsc: {
+      chainId: 56,
+      url: 'https://bsc-dataseed.binance.org/',
       accounts: [DEPLOYER_PRIVATE_KEY],
-      allowUnlimitedContractSize: true,
+    },
+    polygon: {
+      chainId: 137,
+      url: 'https://polygon-rpc.com/',
+      accounts: [DEPLOYER_PRIVATE_KEY],
     },
     fantom: {
       chainId: 250,
@@ -33,6 +40,14 @@ const config: HardhatUserConfig = {
       chainId: 1,
       url: 'https://mainnet.infura.io/v3/' + infuraApiKey,
       accounts: [DEPLOYER_PRIVATE_KEY],
+    },
+
+    ftmtenderly: {
+      chainId: 250,
+      url:
+        'https://virtual.fantom.rpc.tenderly.co/4a72a7ad-9a67-43f1-9864-ba2eb1e93186',
+      accounts: [DEPLOYER_PRIVATE_KEY],
+      allowUnlimitedContractSize: true,
     },
   },
   solidity: {
@@ -131,13 +146,12 @@ const config: HardhatUserConfig = {
     apiKey: etherscanApiKey,
     customChains: [],
   },
-}
-
-if (ENABLE_TENDERLY) {
-  config.tenderly = {
+  tenderly: {
     project: TENDERLY_PROJECT,
     username: TENDERLY_USERNAME,
-    privateVerification: false,
-  }
+    accessKey: TENDERLY_ACCESS_KEY,
+    privateVerification: true,
+  },
 }
+
 export default config

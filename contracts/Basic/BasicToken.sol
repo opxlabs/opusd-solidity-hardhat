@@ -35,7 +35,7 @@ contract BasicToken is ERC20, ERC20Burnable, ERC20Pausable, AccessControl, ERC20
         _unpause();
     }
 
-    function mint(address to, uint256 amount) public onlyRole(MINTER_ROLE) {
+    function mint(address to, uint256 amount) public virtual onlyRole(MINTER_ROLE) {
         _mint(to, amount);
     }
 
